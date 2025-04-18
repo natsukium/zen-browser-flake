@@ -31,7 +31,7 @@
         pkgs.alejandra
     );
 
-    homeModules = rec {
+    homeModules = {
       beta = import ./hm-module.nix {
         inherit self home-manager;
         name = "beta";
@@ -44,7 +44,9 @@
         inherit self home-manager;
         name = "twilight-official";
       };
-      default = beta;
+      default = import ./hm-module.nix {
+        inherit self home-manager;
+      };
     };
   };
 }
